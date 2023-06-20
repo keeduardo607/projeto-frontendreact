@@ -1,24 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
-import Filtros from "./componentes/Filtros/Filtros"
-import Home from "./componentes/Home/Home"
-import Produtos from "./componentes/Home/Produtos/Produtos"
-import Carrinho from "./componentes/Carrinho/Carrinho"
-import Itens from "./componentes/Carrinho/Itens/Itens"
+import ContainerApp from './appStyle'
+import Filtros from "./componentes/Filtros/filtros"
+import Home from "./componentes/Home/home"
+import Carrinho from "./componentes/Carrinho/carrinho"
 
 function App() {
   return (
-  <div className="App">
-
+  <ContainerApp>
+  
   <Filtros />
 
   <Home />
-  <Produtos />
 
   <Carrinho />
-  <Itens />
 
-  </div>
+  </ContainerApp>
   );
 }
 
