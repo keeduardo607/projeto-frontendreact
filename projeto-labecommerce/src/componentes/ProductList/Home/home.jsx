@@ -1,14 +1,16 @@
 import React from "react";
-import Produtos from "./Produtos/produtos";
-import { ContainerHome, H2Home } from "./homeStyle";
+import Produtos from "../ProductCard/produtos";
+import { ContainerHome, H2Home } from "./homeStyle"
 
-export default function Home () {
-    
+export default function Home (props) {
+ 
+  const {products} = props
+
   return (
   <ContainerHome>
 
   <H2Home>
-    <p>Quantidade de Produtos: 3</p>
+    <p>Quantidade de Produtos: {products.length}  </p>
 
     <label htmlFor="">
     Ordenação:
@@ -19,7 +21,7 @@ export default function Home () {
    </label>
   </H2Home>
   
-  <Produtos />
+  <Produtos products={products} />
 
   </ContainerHome>
   );

@@ -1,5 +1,5 @@
 import React from "react";
-import Itens from "./Itens/itens";
+import Itens from "../Items/itens";
 import { ContainerCarrinho, H2Carrinho } from "./carrinhoStyle";
 
 
