@@ -5,39 +5,23 @@ export const ContainerProdutos = styled.div`
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;
   padding: 16px;
-`
 
-export const SectionProdutos = styled.section`
-  border: 1px solid black;
-  display: flex;
-  flex-direction: column;
-
-  img {
-    overflow-clip-margin: content-box;
-    overflow: clip;
+  div img {
+    height: 20vh;
+    width: 12vw;
   }
 
-  h2 {
-    display: flex;
-    flex-direction: column;
-    padding: 16px;
-  }
-
-  h2 p {
-    margin: 4px 0px;
-  }
-
-  p {
+  div p {
     display: block;
     margin-block-start: 1em;
     margin-block-end: 1em;
     margin-inline-start: 0px;
     margin-inline-end: 0px;
+    font-style: bold
   }
 
-  h2 button {
+  button {
     align-self: center;
     margin-top: 4px;
   }
 `
-
