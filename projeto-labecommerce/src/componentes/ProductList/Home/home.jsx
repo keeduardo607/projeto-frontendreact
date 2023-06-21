@@ -1,28 +1,41 @@
-import React from "react";
 import Produtos from "../ProductCard/produtos";
-import { ContainerHome, H2Home } from "./homeStyle"
+import { ContainerHome, H2Home, LabelHome } from "./homeStyle"
+import { useState } from "react";
 
-export default function Home (props) {
- 
-  const {products} = props
+export default function Home ({products, searchFilter, setSearchFilter, minFilter, setMinFilter, maxFilter, setMaxFilter}) {
+
+  const [ordination, setOrdination] = useState('asc')
+
+  const handleOrdination = (e) => {
+    setOrdination(e.target.value)
+  }
 
   return (
   <ContainerHome>
 
   <H2Home>
     <p>Quantidade de Produtos: {products.length}  </p>
-
-    <label htmlFor="">
+  
+    <LabelHome>
     Ordenação:
-    <select name="" id="">
-      <option value="crescente">Crescente</option>
-      <option value="decrescente">Decrescente</option>
+    <select value={ordination} onChange={handleOrdination}>
+      <option value="asc"> Crescente</option>
+      <option value="desc"> Decrescente</option>
     </select>
-   </label>
+   </LabelHome>
   </H2Home>
   
-  <Produtos products={products} />
-
+  <Produtos
+    products={products} 
+    searchFilter={searchFilter} 
+    setSearchFilter={setSearchFilter}
+    minFilter={minFilter} 
+    setMinFilter={setMinFilter} 
+    maxFilter={maxFilter} 
+    setMaxFilter={setMaxFilter}
+    ordination={ordination}
+    setOrdination={setOrdination}
+  />
   </ContainerHome>
   );
 }

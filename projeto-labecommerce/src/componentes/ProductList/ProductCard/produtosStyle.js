@@ -6,22 +6,44 @@ export const ContainerProdutos = styled.div`
   gap: 16px;
   padding: 16px;
 
+  div {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    align-items: center;
+    background-color: lightblue;
+  }
+
   div img {
     height: 20vh;
-    width: 12vw;
+    width: 13vw;
+    margin: 10px;
+    border: black solid 1px;
   }
 
-  div p {
-    display: block;
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    font-style: bold
+  strong {
+    margin: 10px;
   }
 
-  button {
+  div button {
     align-self: center;
-    margin-top: 4px;
+    margin: 10px;
+    cursor: pointer;
   }
+
+  #value {
+    font-weight: bold;
+    font-style: italic;
+  }
+
+  #name {
+    font-weight: bold;
+    font-size: 80%;
+    margin: 10px;
+    text-transform: capitalize;
+  }
+
+
 `
+
+
