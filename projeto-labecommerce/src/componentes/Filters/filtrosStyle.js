@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const DivContainer = styled.div`
-  height: 80vh;
+  height: 90vh;
   border: 1px solid black;
   padding: 8px;
 `
