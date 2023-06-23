@@ -2,17 +2,25 @@ import React from "react";
 import { ContainerProdutos } from "./produtosStyle";
 
    
-  export default function Produtos ({products, searchFilter, minFilter, setMinFilter, maxFilter, setMaxFilter, ordination, setOrdination}) {
+  export default function Produtos ({products, searchFilter, minFilter, maxFilter, ordination}) {
+
+    //console.log('products', products);
+    //console.log('searchFilter', searchFilter);
+    //console.log('minFilter', minFilter);
+    //console.log('maxFilter', maxFilter);
+    //console.log('ordination', ordination);
 
   return (
     <ContainerProdutos>
     {products
       .filter((item) => { 
-        if(item.value >= minFilter && item.value <= maxFilter){
-        return item
-        } else if (!minFilter && !maxFilter){
-        return products
-        }
+        if (item.value >= minFilter && !maxFilter){ 
+          return item
+        } else if (item.value >= minFilter && item.value <= maxFilter){
+          return item
+        }else if (!minFilter && !maxFilter){
+          return products
+        } return false
       })
       .sort(() => {
         if (ordination === 'asc') {
@@ -26,7 +34,7 @@ import { ContainerProdutos } from "./produtosStyle";
         return item
         } else if (!searchFilter){
         return products
-        }
+        } return false
       })
       .map((item) => (
         <div key={item.id}>
