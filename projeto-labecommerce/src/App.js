@@ -10,7 +10,6 @@ function App() {
   const [maxFilter, setMaxFilter] = useState(0);
   const [searchFilter, setSearchFilter] = useState('');
   const [cart, setCart] = useState([]);
-  const [amount, setAmount] = useState(0);
 
   return (
     <ContainerApp>
