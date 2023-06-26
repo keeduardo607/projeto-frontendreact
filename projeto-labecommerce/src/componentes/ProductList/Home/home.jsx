@@ -1,6 +1,17 @@
+import React, { useState } from "react";
 import Produtos from "../ProductCard/produtos";
-import { ContainerHome, H2Home, LabelHome } from "./homeStyle"
-import { useState } from "react";
+import { ContainerHome, H2Home, LabelHome } from "./homeStyle";
+
+export default function Home({
+  products,
+  searchFilter,
+  minFilter,
+  maxFilter,
+  cart,
+  setCart
+}) {
+  
+  const [ordination, setOrdination] = useState("asc");
 
 export default function Home ({products, searchFilter, setSearchFilter, minFilter, setMinFilter, maxFilter, setMaxFilter, amount, setAmount, cart, setCart}) {
 
@@ -18,36 +29,59 @@ export default function Home ({products, searchFilter, setSearchFilter, minFilte
 
   const [ordination, setOrdination] = useState('asc')
 
-  const handleOrdination = (e) => {
-    setOrdination(e.target.value)
-  }
+  const handleAdicionarAoCarrinho = (produto) => {
+    const produtoNoCarrinho = cart.find((item) => item.id === produto.id);
+  
+    if (produtoNoCarrinho) {
+      const cartAtualizado = cart.map((item) => {
+        if (item.id === produto.id) {
+          return {
+            ...item,
+            quantidade: item.quantidade + 1,
+          };
+        }
+        return item;
+      });
+  
+      setCart(cartAtualizado);
+    } else {
+      const novoProduto = {
+        ...produto,
+        quantidade: 1,
+        value: parseFloat(produto.value), 
+      };
+  
+      setCart([...cart, novoProduto]);
+    }
+  };
 
   return (
-  <ContainerHome>
+    <ContainerHome>
+      <H2Home>
+        <p>Quantidade de Produtos: {products.length}</p>
 
-  <H2Home>
-    <p>Quantidade de Produtos: {products.length}  </p>
-  
-    <LabelHome>
-    Ordenação:
-    <select value={ordination} onChange={handleOrdination}>
-      <option value="asc"> Crescente</option>
-      <option value="desc"> Decrescente</option>
-    </select>
-   </LabelHome>
-  </H2Home>
-  
-  <Produtos
-    products={products} 
-    searchFilter={searchFilter} 
-    setSearchFilter={setSearchFilter}
-    minFilter={minFilter} 
-    setMinFilter={setMinFilter} 
-    maxFilter={maxFilter} 
-    setMaxFilter={setMaxFilter}
-    ordination={ordination}
-    setOrdination={setOrdination}
-  />
-  </ContainerHome>
+        <LabelHome>
+          Ordenação:
+          <select
+            value={ordination}
+            onChange={(e) => setOrdination(e.target.value)}
+          >
+            <option value="asc"> Crescente</option>
+            <option value="desc"> Decrescente</option>
+          </select>
+        </LabelHome>
+      </H2Home>
+
+      <Produtos
+        products={products}
+        searchFilter={searchFilter}
+        minFilter={minFilter}
+        maxFilter={maxFilter}
+        ordination={ordination} 
+        cart={cart}
+        setCart={setCart}
+        handleAdicionarAoCarrinho={handleAdicionarAoCarrinho}
+      />
+    </ContainerHome>
   );
 }
