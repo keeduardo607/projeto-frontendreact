@@ -1,19 +1,15 @@
 import React from "react";
 import Itens from "../Items/itens";
-import { ContainerCarrinho, H2Carrinho } from "./carrinhoStyle";
+import { ContainerCarrinho } from "./carrinhoStyle";
 
+export default function Carrinho({ cart, setCart }) {
 
-export default function Carrinho () {
-    
   return (
-  <ContainerCarrinho>
-    <H2Carrinho>
-      <p>Carrinho:</p>
-    </H2Carrinho>
-   
-   <Itens />
-
-  </ContainerCarrinho>
+    <ContainerCarrinho>
+      <Itens cart={cart} setCart={setCart} />
+    </ContainerCarrinho>
   );
 }
+
+
 
