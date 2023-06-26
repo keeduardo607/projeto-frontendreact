@@ -9,7 +9,6 @@ import {
   TotalContainer
 } from "../Items/ItemsStyled";
 
-
 export default function Itens({ cart, setCart }) {
   const handleRemoverDoCarrinho = (produto) => {
     const novoCarrinho = cart.filter((item) => item.id !== produto.id);
@@ -42,7 +41,7 @@ export default function Itens({ cart, setCart }) {
         </ItemContainer>
       ))}
       <TotalContainer>
-        <p>Valor Total: R${calcularValorTotal()}</p>
+        <p>Valor Total: R$ {calcularValorTotal()}</p>
       </TotalContainer>
     </ContainerItens>
   );

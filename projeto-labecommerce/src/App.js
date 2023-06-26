@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import ContainerApp from './appStyle';
 import Filtros from "./componentes/Filters/filtros";
 import Home from "./componentes/ProductList/Home/home";
@@ -31,10 +31,14 @@ function App() {
         setMaxFilter={setMaxFilter}
         cart={cart}
         setCart={setCart}
+        amount={amount}
+        setAmount={setAmount}
       />
       <Carrinho 
         cart={cart}
         setCart={setCart}
+        amount={amount}
+        setAmount={setAmount}
       />
     </ContainerApp>
   );
