@@ -2,6 +2,8 @@ import styled from "styled-components";
 
 export const ContainerHome = styled.div`
   display: block;
+  height: 90vh;
+  overflow: auto;
 `
 
 export const H2Home = styled.h2`

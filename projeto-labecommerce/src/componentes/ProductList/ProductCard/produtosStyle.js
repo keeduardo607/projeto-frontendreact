@@ -11,7 +11,7 @@ export const ContainerProdutos = styled.div`
     flex-direction: column;
     border: 1px solid black;
     align-items: center;
-    background-color: lightblue;
+    background-color: lightgrey;
   }
 
   div img {

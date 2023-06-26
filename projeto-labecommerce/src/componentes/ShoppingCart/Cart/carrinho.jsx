@@ -3,7 +3,6 @@ import Itens from "../Items/itens";
 import { ContainerCarrinho } from "./carrinhoStyle";
 
 export default function Carrinho({ cart, setCart }) {
-
   return (
     <ContainerCarrinho>
       <Itens cart={cart} setCart={setCart} />
@@ -11,7 +10,7 @@ export default function Carrinho({ cart, setCart }) {
   );
 }
 
-
+import React from "react";
 import {
   ContainerItens,
   ItemContainer,
@@ -21,7 +20,6 @@ import {
   RemoveButton,
   TotalContainer
 } from "../Items/ItemsStyled";
-
 
 export default function Itens({ cart, setCart }) {
   const handleRemoverDoCarrinho = (produto) => {
@@ -55,7 +53,7 @@ export default function Itens({ cart, setCart }) {
         </ItemContainer>
       ))}
       <TotalContainer>
-        <p>Valor Total: R${calcularValorTotal()}</p>
+        <p>Valor Total: R$ {calcularValorTotal()}</p>
       </TotalContainer>
     </ContainerItens>
   );

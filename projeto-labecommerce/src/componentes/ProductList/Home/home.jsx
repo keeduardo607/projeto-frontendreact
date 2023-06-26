@@ -2,20 +2,12 @@ import React, { useState } from "react";
 import Produtos from "../ProductCard/produtos";
 import { ContainerHome, H2Home, LabelHome } from "./homeStyle";
 
-export default function Home({
-  products,
-  searchFilter,
-  minFilter,
-  maxFilter,
-  cart,
-  setCart
-}) {
-  
+export default function Home({ products, searchFilter, minFilter, maxFilter, cart, setCart }) {
   const [ordination, setOrdination] = useState("asc");
 
   const handleAdicionarAoCarrinho = (produto) => {
     const produtoNoCarrinho = cart.find((item) => item.id === produto.id);
-  
+
     if (produtoNoCarrinho) {
       const cartAtualizado = cart.map((item) => {
         if (item.id === produto.id) {
@@ -26,15 +18,15 @@ export default function Home({
         }
         return item;
       });
-  
+
       setCart(cartAtualizado);
     } else {
       const novoProduto = {
         ...produto,
         quantidade: 1,
-        value: parseFloat(produto.value), 
+        value: parseFloat(produto.value.toFixed(2)),
       };
-  
+
       setCart([...cart, novoProduto]);
     }
   };
@@ -61,7 +53,7 @@ export default function Home({
         searchFilter={searchFilter}
         minFilter={minFilter}
         maxFilter={maxFilter}
-        ordination={ordination} 
+        ordination={ordination}
         cart={cart}
         setCart={setCart}
         handleAdicionarAoCarrinho={handleAdicionarAoCarrinho}
