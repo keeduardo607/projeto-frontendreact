@@ -6,6 +6,7 @@ import Carrinho from "./componentes/ShoppingCart/Cart/carrinho";
 import products from './componentes/assents/productsList';
 
 function App() {
+
   const [minFilter, setMinFilter] = useState(0);
   const [maxFilter, setMaxFilter] = useState(0);
   const [searchFilter, setSearchFilter] = useState('');
@@ -38,6 +39,43 @@ function App() {
         setCart={setCart}
       />
     </ContainerApp>
+
+
+  const [minFilter, setMinFilter] = useState('')
+  const [maxFilter, setMaxFilter ] = useState('')
+  const [searchFilter, setSearchFilter ] = useState('')
+  const [cart, setCart] = useState(0)
+  const [amount, setAmount] = useState(0) 
+
+  return (
+  <ContainerApp>
+  <Filtros 
+    searchFilter={searchFilter} 
+    setSearchFilter={setSearchFilter} 
+    minFilter={minFilter} 
+    setMinFilter={setMinFilter} 
+    maxFilter={maxFilter} 
+    setMaxFilter={setMaxFilter} />
+  <Home 
+    products={products}
+    searchFilter={searchFilter}
+    setSearchFilter={setSearchFilter}
+    minFilter={minFilter} 
+    setMinFilter={setMinFilter} 
+    maxFilter={maxFilter} 
+    setMaxFilter={setMaxFilter}
+    cart={cart}
+    setCart={setCart} 
+    amount={amount}
+    setAmount={setAmount} />
+
+  <Carrinho 
+  amount={amount}
+  setAmount={setAmount}
+  cart={cart}
+  setCart={setCart} />
+  </ContainerApp>
+
   );
 }
 
