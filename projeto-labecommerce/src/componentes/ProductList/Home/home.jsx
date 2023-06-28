@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Produtos from "../ProductCard/produtos";
-import { ContainerHome, H2Home, LabelHome } from "./homeStyle";
+import { ContainerHome, H2Home, LabelHome, SelectHome, OrdinationHome, QuantityProducts, OptionSelect } from "./homeStyle";
 
 export default function Home({ products, searchFilter, minFilter, maxFilter, cart, setCart }) {
   const [ordination, setOrdination] = useState("asc");
@@ -34,17 +34,16 @@ export default function Home({ products, searchFilter, minFilter, maxFilter, car
   return (
     <ContainerHome>
       <H2Home>
-        <p>Quantidade de Produtos: {products.length}</p>
+        <QuantityProducts>Quantidade de Produtos: {products.length}</QuantityProducts>
 
         <LabelHome>
-          Ordenação:
-          <select
+          <OrdinationHome>Ordenação:</OrdinationHome>
+          <SelectHome
             value={ordination}
-            onChange={(e) => setOrdination(e.target.value)}
-          >
-            <option value="asc"> Crescente</option>
-            <option value="desc"> Decrescente</option>
-          </select>
+            onChange={(e) => setOrdination(e.target.value)}>
+            <OptionSelect value="asc"> Crescente</OptionSelect>
+            <OptionSelect value="desc"> Decrescente</OptionSelect>
+          </SelectHome>
         </LabelHome>
       </H2Home>
 
