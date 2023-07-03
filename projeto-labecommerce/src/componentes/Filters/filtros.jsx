@@ -42,7 +42,7 @@ export default function Filtros({ searchFilter, setSearchFilter, minFilter, setM
         <InputFilter type="Number" placeholder="Digite o valor máximo" value={maxFilter} onChange={handleMaxFilter} />
       </LabelFilters>
       <LabelFilters htmlFor="">
-        <TextInput>Valor Maximo:</TextInput>
+        <TextInput>Buscar por nome:</TextInput>
         <InputFilter type="text" placeholder="Digite o nome do produto" value={searchFilter} onChange={(e) => setSearchFilter(e.target.value)} />
       </LabelFilters>
     </DivContainer>
