@@ -1,15 +1,10 @@
+import { useEffect } from "react";
 import React from "react";
-import {
-  ContainerItens,
-  ItemContainer,
-  ItemInfo,
-  ItemName,
-  ItemActions,
-  RemoveButton,
-  TotalContainer
+import {ContainerItens, ItemContainer, ItemInfo, ItemName, ItemActions, RemoveButton, TotalContainer, ItemQuantity, ItemPrice, TotalValue, CartH3
 } from "../Items/ItemsStyled";
 
 export default function Itens({ cart, setCart }) {
+
   const handleRemoverDoCarrinho = (produto) => {
     const novoCarrinho = cart.filter((item) => item.id !== produto.id);
     setCart(novoCarrinho);
@@ -23,15 +18,28 @@ export default function Itens({ cart, setCart }) {
     return valorTotal.toFixed(2);
   };
 
+  useEffect(() => {
+    if (cart.length > 0) {
+      localStorage.setItem('cart', JSON.stringify(cart))
+    }
+  }, [cart])
+
+  useEffect(() => {
+    const cartSave = localStorage.getItem('cart')
+    if (cartSave) {
+      setCart(JSON.parse(cartSave))
+    }
+  }, [setCart])
+
   return (
     <ContainerItens>
-      <h3>Carrinho: </h3>
-      {cart.map((item) => (
+      <CartH3>Carrinho: </CartH3>
+      {cart && cart.map((item) => (
         <ItemContainer key={item.id}>
           <ItemInfo>
             <ItemName>{item.name}</ItemName>
-            <p>Quantidade: {item.quantidade}</p>
-            <p>Preço: R$ {item.value.toFixed(2)}</p>
+            <ItemQuantity>Quantidade: {item.quantidade}</ItemQuantity>
+            <ItemPrice>Preço: R$ {item.value.toFixed(2)}</ItemPrice>
           </ItemInfo>
           <ItemActions>
             <RemoveButton onClick={() => handleRemoverDoCarrinho(item)}>
@@ -41,7 +49,7 @@ export default function Itens({ cart, setCart }) {
         </ItemContainer>
       ))}
       <TotalContainer>
-        <p>Valor Total: R$ {calcularValorTotal()}</p>
+        <TotalValue>Valor Total: R$ {calcularValorTotal()}</TotalValue>
       </TotalContainer>
     </ContainerItens>
   );

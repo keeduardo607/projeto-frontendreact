@@ -1,5 +1,5 @@
 import React from "react";
-import { ContainerProdutos } from "./produtosStyle";
+import { ContainerProdutos, ProductName, ProductPrice, ProductButtom, ProductsStyle, ProductImg } from "./produtosStyle";
 
 export default function Produtos({ products, searchFilter, minFilter, maxFilter, ordination, cart, setCart, handleAdicionarAoCarrinho }) {
   return (
@@ -18,11 +18,11 @@ export default function Produtos({ products, searchFilter, minFilter, maxFilter,
             return false;
           }
         })
-        .sort(() => {
+        .sort((a, b) => {
           if (ordination === 'asc') {
-            return 0;
+            return a.value - b.value;
           } else {
-            return -1;
+            return b.value - a.value;
           }
         })
         .filter((item) => {
@@ -34,12 +34,12 @@ export default function Produtos({ products, searchFilter, minFilter, maxFilter,
           return false;
         })
         .map((item, index) => (
-          <div key={index}>
-            <img src={item.imageUrl} alt={item.name} />
-            <p id="name"> {item.name}</p>
-            <p id="value"> R$ {item.value.toFixed(2)}</p>
-            <button onClick={() => handleAdicionarAoCarrinho(item)}>Adicionar ao Carrinho</button>
-          </div>
+          <ProductsStyle key={index}>
+            <ProductImg src={item.imageUrl} alt={item.name} />
+            <ProductName> {item.name}</ProductName>
+            <ProductPrice> R$ {item.value.toFixed(2)}</ProductPrice>
+            <ProductButtom onClick={() => handleAdicionarAoCarrinho(item)}>Adicionar ao Carrinho</ProductButtom>
+          </ProductsStyle>
         ))}
     </ContainerProdutos>
   );
